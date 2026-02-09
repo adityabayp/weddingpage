@@ -470,4 +470,61 @@
                         </a>
                         <a href="https://www.instagram.com/adityabayp/" target="_blank" class="p-4 flex items-center gap-4 border-b text-inherit no-underline bg-white active:bg-gray-50 transition-colors">
                             <div class="bg-blue-50 w-10 h-10 rounded-md flex items-center justify-center text-sky-500 shrink-0 border border-sky-100"><i class="fab fa-instagram"></i></div>
-                            <div class="text-xs"><b>Instagram <span class="text-sky-500">Aditya</span></b><br><span
+                            <div class="text-xs"><b>Instagram <span class="text-sky-500">Aditya</span></b><br><span class="text-sky-500 italic">@adityabayp</span></div>
+                        </a>
+                        <a href="https://www.instagram.com/amarthaan/" target="_blank" class="p-4 flex items-center gap-4 border-b text-inherit no-underline bg-white active:bg-gray-50 transition-colors">
+                            <div class="bg-pink-50 w-10 h-10 rounded-md flex items-center justify-center text-pink-500 shrink-0 border border-pink-100"><i class="fab fa-instagram"></i></div>
+                            <div class="text-xs"><b>Instagram <span class="text-pink-500">Amartha</span></b><br><span class="text-pink-500 italic">@amarthaan</span></div>
+                        </a>
+                        <a href="https://sites.google.com/view/pernikahan-aditya-amartha" target="_blank" class="p-4 flex items-center gap-4 border-b text-inherit no-underline bg-white active:bg-gray-50 transition-colors">
+                            <div class="bg-purple-50 w-10 h-10 rounded-md flex items-center justify-center text-purple-600 shrink-0 border border-purple-100"><i class="fas fa-globe"></i></div>
+                            <div class="text-xs"><b>Website Pernikahan</b><br><span class="text-purple-600 italic">Kunjungi Google Sites</span></div>
+                        </a>
+                    </div>`;
+            } else {
+                content.innerHTML = `
+                    <div class="flex flex-col">
+                        <a href="undangan.pdf" target="_blank" class="p-4 flex items-center gap-4 border-b bg-white block no-underline text-inherit active:bg-gray-50">
+                            <div class="bg-red-50 w-10 h-10 rounded-md flex items-center justify-center text-red-500 shrink-0 border border-red-100"><i class="fas fa-file-pdf"></i></div>
+                            <div class="text-xs"><b>E-Undangan_Aditya_Amartha.pdf</b><br><span class="text-gray-400">Klik untuk buka</span></div>
+                        </a>
+                        <a href="https://www.canva.com/design/DAF..." target="_blank" class="p-4 flex items-center gap-4 border-b bg-white block no-underline text-inherit active:bg-gray-50">
+                            <div class="bg-blue-50 w-10 h-10 rounded-md flex items-center justify-center text-blue-600 shrink-0 border border-blue-100"><i class="fas fa-palette"></i></div>
+                            <div class="text-xs"><b>Our Love Story</b><br><span class="text-gray-400">Klik untuk lihat cerita kami</span></div>
+                        </a>
+                    </div>`;
+            }
+        }
+
+        function copyToClipboard(text) {
+            const ta = document.createElement("textarea");
+            ta.value = text; ta.style.position = "fixed"; ta.style.left = "-9999px";
+            document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+            document.body.removeChild(ta);
+            const t = document.getElementById('toast');
+            t.style.opacity = '1'; setTimeout(() => t.style.opacity = '0', 2000);
+        }
+
+        function toggleMusic() {
+            const a = document.getElementById('bg-music');
+            if(state.isMusicPlaying) a.pause(); else a.play();
+            state.isMusicPlaying = !state.isMusicPlaying;
+            updateMusicUI();
+        }
+
+        function updateMusicUI() {
+            document.getElementById('music-icon').className = state.isMusicPlaying ? 'fas fa-compact-disc fa-spin text-[#00a884]' : 'fas fa-music text-gray-400';
+        }
+
+        function updateCountdown() {
+            const diff = state.weddingDate - new Date().getTime();
+            const el = document.getElementById('countdown');
+            if(diff <= 0) { el.innerHTML = "Acara Sedang Berlangsung!"; return; }
+            const d = Math.floor(diff/(1000*60*60*24)), h = Math.floor((diff%(1000*60*60*24))/(1000*60*60)), m = Math.floor((diff%(1000*60*60))/(1000*60)), s = Math.floor((diff%(1000*60))/1000);
+            el.innerHTML = [[d,'Hari'],[h,'Jam'],[m,'Menit'],[s,'Detik']].map(v => `<div class="text-center"><div class="text-xl font-bold text-[#008069]">${v[0]}</div><div class="text-[8px] uppercase text-gray-400">${v[1]}</div></div>`).join('');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
