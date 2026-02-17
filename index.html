@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Aditya & Amartha</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
     <style>
         html, body {
             height: 100%;
@@ -15,75 +15,103 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #333333;
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fff9f9;
+            color: #5d576b;
             -webkit-font-smoothing: antialiased;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-cute { font-family: 'Gaegu', cursive; }
         
         .link-card {
-            background-color: #f5f5f7;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #fce4ec;
         }
         
         .link-card:hover {
-            background-color: #ffffff;
-            transform: translateY(-3px);
-            border-color: #e5e7eb;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transform: scale(1.05);
+            border-color: #f8bbd0;
+            background-color: #fffafb;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            70% { transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
         }
-        .animate-fade {
-            animation: fadeIn 0.9s ease forwards;
+        
+        .animate-pop {
+            animation: popIn 0.8s ease forwards;
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
     </style>
 </head>
-<body class="bg-white">
+<body>
 
-    <div class="h-screen w-full max-w-md flex flex-col justify-between py-14 px-8">
+    <div class="h-screen w-full max-w-md flex flex-col justify-between py-12 px-8 relative">
         
-        <header class="text-center animate-fade">
-            <p class="text-[10px] uppercase tracking-[0.5em] text-gray-400 mb-8">Wedding Page</p>
-            <h1 class="font-serif text-4xl text-gray-900 mb-2">Aditya & Amartha</h1>
-            <p class="text-xs tracking-[0.3em] text-gray-500 font-light uppercase">12 Mei 2026</p>
+        <!-- Ikon melayang lucu -->
+        <div class="absolute top-10 left-10 text-pink-200 text-3xl floating" style="animation-delay: 0s;">🌸</div>
+        <div class="absolute bottom-20 right-10 text-pink-200 text-3xl floating" style="animation-delay: 1.5s;">☁️</div>
+
+        <header class="text-center animate-pop">
+            <div class="inline-block bg-pink-100 text-pink-500 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">
+                Our Happy Day!
+            </div>
+            <h1 class="font-cute text-5xl text-pink-400 mb-1">Aditya & Amartha</h1>
+            <p class="text-sm font-medium text-pink-300">12 Mei 2026 • Best day ever!</p>
         </header>
 
-        <nav class="space-y-4 animate-fade" style="animation-delay: 0.2s;">
-            <p class="text-[11px] text-center text-gray-400 tracking-widest mb-6 italic">Save the date and join us:</p>
+        <nav class="space-y-4 animate-pop" style="animation-delay: 0.2s;">
+            <p class="text-xs text-center text-gray-400 font-medium mb-4">Tap below to open! ✨</p>
             
-            <a href="https://amarthaditya.netlify.app" class="link-card flex items-center p-5 rounded-2xl group">
-                <span class="text-xl mr-4 group-hover:scale-110 transition-transform">✉️</span>
-                <span class="text-sm font-medium text-gray-700 tracking-tight">Digital Invitation</span>
+            <a href="https://amarthaditya.netlify.app" class="link-card flex items-center p-4 rounded-[2rem] group">
+                <div class="w-12 h-12 bg-pink-50 rounded-full flex items-center justify-center mr-4 group-hover:bg-pink-100 transition-colors">
+                    <span class="text-2xl">💌</span>
+                </div>
+                <span class="text-sm font-bold text-gray-600">Buka Undangan</span>
             </a>
             
-            <a href="https://www.google.com/maps/search/?api=1&query=Gedung+Korpri+Kabupaten+Tegal" target="_blank" class="link-card flex items-center p-5 rounded-2xl group">
-                <span class="text-xl mr-4 group-hover:scale-110 transition-transform">📍</span>
-                <span class="text-sm font-medium text-gray-700 tracking-tight">Location: Korpri Slawi</span>
+            <a href="https://www.google.com/maps/search/Gedung+Korpri+Kabupaten+Tegal" target="_blank" class="link-card flex items-center p-4 rounded-[2rem] group">
+                <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mr-4 group-hover:bg-blue-100 transition-colors">
+                    <span class="text-2xl">📍</span>
+                </div>
+                <span class="text-sm font-bold text-gray-600">Location: Korpri Slawi</span>
             </a>
             
-            <a href="https://drive.google.com" target="_blank" class="link-card flex items-center p-5 rounded-2xl group">
-                <span class="text-xl mr-4 group-hover:scale-110 transition-transform">📸</span>
-                <span class="text-sm font-medium text-gray-700 tracking-tight">Photo Gallery</span>
+            <a href="https://drive.google.com" target="_blank" class="link-card flex items-center p-4 rounded-[2rem] group">
+                <div class="w-12 h-12 bg-yellow-50 rounded-full flex items-center justify-center mr-4 group-hover:bg-yellow-100 transition-colors">
+                    <span class="text-2xl">📸</span>
+                </div>
+                <span class="text-sm font-bold text-gray-600">Gallery</span>
             </a>
             
-            <a href="https://www.canva.com" target="_blank" class="link-card flex items-center p-5 rounded-2xl group">
-                <span class="text-xl mr-4 group-hover:scale-110 transition-transform">✨</span>
-                <span class="text-sm font-medium text-gray-700 tracking-tight">Our Moments</span>
+            <a href="https://www.canva.com" target="_blank" class="link-card flex items-center p-4 rounded-[2rem] group">
+                <div class="w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center mr-4 group-hover:bg-purple-100 transition-colors">
+                    <span class="text-2xl">🎀</span>
+                </div>
+                <span class="text-sm font-bold text-gray-600">Our Moments</span>
             </a>
         </nav>
 
-        <footer class="text-center animate-fade" style="animation-delay: 0.4s;">
-            <div class="font-serif text-2xl text-gray-200 tracking-[0.4em] opacity-60">A & A</div>
+        <footer class="text-center animate-pop" style="animation-delay: 0.4s;">
+            <div class="flex justify-center gap-2 mb-2">
+                <span class="text-pink-300">🧸</span>
+                <span class="text-pink-300">🧸</span>
+            </div>
+            <div class="font-cute text-3xl text-pink-200 tracking-widest uppercase">A❤️A</div>
         </footer>
 
     </div>
